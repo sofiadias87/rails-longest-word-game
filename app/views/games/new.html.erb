@@ -1,0 +1,17 @@
+<div class="subtext">
+  <h2> Here is your grid:</h2>
+</div>
+<div class="cards">
+  <% @letters.each do | letter | %>
+    <div class="card-letter">
+      <%= letter.capitalize %>
+    </div>
+  <% end %>
+</div>
+
+<form class="form" action="/score" method="post" data-turbo="false">
+  <input type="text" name="play" class="score-box">
+  <input type="submit" value="Play" class= "button">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
